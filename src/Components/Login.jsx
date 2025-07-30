@@ -9,12 +9,12 @@ import {
 import { auth } from "../Utils/firebase";
 import { addUser } from "../Utils/userSlice";
 import { useDispatch } from "react-redux";
+import { BG_URL } from "../Utils/constants";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
 
   const [errorMessage, setErrorMessage] = useState(null);
-
 
   const dispatch = useDispatch();
 
@@ -69,7 +69,6 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -86,10 +85,7 @@ const Login = () => {
     <div>
       <Header />
       <div className="absolute">
-        <img
-          src="https://www.okynemedialab.com/wp-content/uploads/2019/11/netflix-background.jpg"
-          alt="logo"
-        />
+        <img src={BG_URL} alt="logo" />
       </div>
       <form
         onSubmit={(e) => e.preventDefault()}
